@@ -47,7 +47,7 @@ class _City_screenState extends State<City_screen> {
 
                 var data_weather = await livelocation.city_location_weather(text_field_input);
 
-                Navigator.push(context, MaterialPageRoute(builder: (context){
+                await Navigator.push(context, MaterialPageRoute(builder: (context){
                   return Loading_Screen(weather_city_location: data_weather,);
                 }));
               }, child: Text("Get Weather", style: TextStyle( fontSize: 30, color: Colors.white),))
