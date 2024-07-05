@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:weather_forecast_and_current_location/services/weather.dart';
-import 'city_screen.dart';
+import 'package:weather_forecast_and_current_location/screens/city_screen.dart';
+import 'package:weather_forecast_and_current_location/screens/city2.dart';
 class location_screen extends StatefulWidget {
+  static String ls='location_screen';
   location_screen({required this.weather_data});
   final weather_data;
 
@@ -109,17 +112,19 @@ String location_screen_wallpaper(){
 
                    var weatherdatadata = await weather.Current_Location_Live();
                 updateUI(weatherdatadata);
-                }, child: Icon(Icons.near_me, size: 50,)),
+                }, child: Icon(Icons.near_me, size: 50,color: Colors.black,)),
                 TextButton(onPressed: ()async{
-                 var navigator_output= await Navigator.push(context, MaterialPageRoute(builder: (context){
-                    return City_screen();
-                  }));
-                 if(navigator_output!=null){
 
-                   var city_l=await weather.city_location_weather(navigator_output);
 
-                   updateUI(city_l);
-                 }
+    var navigator_output= await Navigator.push(context, MaterialPageRoute(builder: (context){
+    return City_screen2();
+    }));
+    if(navigator_output!=null){
+
+    var city_l=await weather.city_location_weather(navigator_output);
+
+    updateUI(city_l);}
+
                 }, child: Icon(Icons.location_city,size: 50,), )
               ],
             ),

@@ -6,7 +6,9 @@ import 'location_screen.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:weather_forecast_and_current_location/services/weather.dart';
 class Loading_Screen extends StatefulWidget {
-  const Loading_Screen({super.key});
+  static String loa='Loading_Screen';
+  Loading_Screen({required this.weather_city_location});
+  final weather_city_location;
 
   @override
   State<Loading_Screen> createState() => _Loading_ScreenState();
@@ -15,10 +17,10 @@ class Loading_Screen extends StatefulWidget {
 class _Loading_ScreenState extends State<Loading_Screen> {
 
   void geolocation_your_phone()async {
-Weathermodel livelocation = new Weathermodel();
-var data_weather = await livelocation.Current_Location_Live();
+//Weathermodel livelocation = new Weathermodel();
+//var data_weather = await livelocation.Current_Location_Live();
    Navigator.push(context, MaterialPageRoute(builder: (context){
-     return location_screen(weather_data: data_weather,);
+     return location_screen(weather_data: widget.weather_city_location,);
    }));
     /*print("Longitude_number: ---------  ------");
  print(l.Longitude_number);

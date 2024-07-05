@@ -1,18 +1,14 @@
-
 import 'package:flutter/material.dart';
-import 'package:weather_forecast_and_current_location/screens/Loading_Screen.dart';
 import 'package:weather_forecast_and_current_location/utilities/constants.dart';
-import 'package:weather_forecast_and_current_location/services/weather.dart';
-class City_screen extends StatefulWidget {
-  static String cisn='City_screen';
-  const City_screen({super.key});
+class City_screen2 extends StatefulWidget {
+  const City_screen2({super.key});
 
   @override
-  State<City_screen> createState() => _City_screenState();
+  State<City_screen2> createState() => _City_screen2State();
 }
 
-class _City_screenState extends State<City_screen> {
-  String text_field_input="";
+class _City_screen2State extends State<City_screen2> {
+  String? text_field_input;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,18 +34,15 @@ class _City_screenState extends State<City_screen> {
                   onChanged: (value) {
                     text_field_input=value;
                   },
+                  /*onChanged: (value){
 
+
+                    print(value);
+                  },*/
                 ),
               ),
               TextButton(onPressed: () async{
-
-                Weathermodel livelocation = new Weathermodel();
-
-                var data_weather = await livelocation.city_location_weather(text_field_input);
-
-                Navigator.push(context, MaterialPageRoute(builder: (context){
-                  return Loading_Screen(weather_city_location: data_weather,);
-                }));
+                Navigator.pop(context,await text_field_input);
               }, child: Text("Get Weather", style: TextStyle( fontSize: 30, color: Colors.white),))
             ],
           ),
